@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block PAGE %}
+Email
+{% endblock %}
+
+{% block MAIN %}
+<div class="container my-5 col-lg-3 col-md-4 col-10 text-center">
+    <h3>Sign in/Register</h3>
+    <form class="mt-3" action="/email/?{% if redirect_after %}redirect_after={{ redirect_after }}{% endif %}" method="post">
+        <div class="form-floating">
+            <input name="email" type="email" class="form-control bg-{{ background }} text-{{ accent }}" id="email" placeholder="name@example.com" maxlength="512" required>
+            <label for="email" class="form-label">Email</label>
+        </div>
+
+        {% if oauth_client %}<input value="{{ oauth_client }}" name="oauth" hidden>{% endif %}
+
+        <div class="mt-3">
+            <button class="btn btn-lg btn-primary" type="submit">Enter</button>
+        </div>
+    </form>
+</div>
+
+{% if not focused %}
+    {% include "about_content.html" %}
+{% endif %}
+
+{% endblock %}

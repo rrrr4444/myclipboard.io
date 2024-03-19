@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block PAGE %}Server Error{% endblock %}
+
+{% block MAIN %}
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="mx-5 my-5">
+        <h1 class="mb-4">Internal Server Error</h1>
+        <h3 class="text-danger mb-2">Error 500: Something has gone wrong.</h3>
+        <h3 class="text-secondary mb-4">Please go to home or try to refresh the page.</h3>
+        <a class="btn btn-outline-{{ accent }} btn-lg" href="/" role="button">Go to Home</a>
+        <a class="btn btn-outline-{{ accent }} btn-lg" onclick="location.reload();" role="button">Refresh Page</a>
+    </div>
+</div>
+{% endblock MAIN %}

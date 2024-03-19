@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block PAGE %}Too Many Requests{% endblock %}
+
+{% block MAIN %}
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="mx-5 my-5">
+        <h1 class="mb-4">Too Many Requests (Error 429)</h1>
+        <h3 class="text-danger mb-2">You have made too many requests on this website.</h3>
+        <h3 class="text-danger mb-4">(More than: {{ rule }})</h3>
+        <h3 id="refresh-text" class="text-secondary">Please wait {{ retry_after }} and try again:</h3>
+        <button id="refresh-button" class="btn btn-primary btn-lg mt-2" onclick="location.reload();" role="button" disabled>Refresh Page</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        refreshButton = document.querySelector("#refresh-button");
+        refreshText = document.querySelector("#refresh-text");
+        setTimeout(() => {
+            refreshButton.disabled = false;
+            refreshText.classList.remove("text-secondary");
+        }, 60 * 1000)
+    });
+</script>
+{% endblock MAIN %}

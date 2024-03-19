@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block PAGE %}
+Home
+{% endblock %}
+
+{% block MAIN %}
+
+<div class="container text-center my-5">
+    <h1>Clipboard</h1>
+</div>
+
+<div class="container my-5 col-lg-4 col-md-6 col-10">
+    <div class="mb-3">
+        <form action="/set/" method="post">
+            <div class="form-group d-flex mt-3">
+                <textarea id="paste-input" name="contents" type="text" class="form-control bg-{{ background }} text-{{ accent }}"
+                    placeholder="Enter new paste" maxlength="100000" rows="4" required></textarea>
+                <button id="paste-btn" class="btn btn-primary ms-2" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="border rounded bg-{{ accent }} text-{{ background }}">
+        <div class="form-group d-flex justify-content-between">
+            <div class="align-self-start text-break m-3">
+                <p id="clipboard-contents" style="white-space: pre-wrap;">{{ clipboard["contents"] }}</p>
+            </div>
+            <div class="align-self-start text-center m-2">
+                <a id="copy-btn" class="btn btn-secondary" data-clipboard-target="#clipboard-contents">
+                    <i id="copy-icon" class="bi bi-clipboard"></i>
+                </a>
+                <br>
+                <a id="refresh-btn" class="btn btn-secondary mt-2">
+                    <i id="refresh-icon" class="bi bi-arrow-repeat"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+
+<script src="/static/index-v2.js"></script>
+
+{% endblock %}
